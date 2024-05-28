@@ -90,11 +90,11 @@ public class SpringBatchConfig {
 
     @Bean
     public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("csv-step", jobRepository).<Customer, Customer>chunk(10, transactionManager)
+        return new StepBuilder("csv-step", jobRepository).<Customer, Customer>chunk(25, transactionManager)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer())
-                .taskExecutor(taskExecutor())
+               .taskExecutor(taskExecutor())
                 .build();
     }
 
